@@ -38,6 +38,7 @@ android:
     - adb shell input keyevent 82 &
 
   before_install:
+    - chmod +x gradlew
     - mkdir "$ANDROID_HOME/licenses" || true
     - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
     - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
@@ -50,7 +51,6 @@ android:
     - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
     - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
     - echo yes | sdkmanager "system-images;android-27;google_apis;armeabi-v7a" # Install emulator system image
-    - chmod +x gradlew
 
   before_cache:
     - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
