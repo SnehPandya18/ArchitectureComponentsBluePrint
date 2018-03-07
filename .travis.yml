@@ -37,7 +37,6 @@ android:
 
   before_install:
     - yes | sdkmanager "platforms;android-27"
-    git update-index --chmod=+x gradlew
     - chmod +x gradlew
 
   before_cache:
