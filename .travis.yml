@@ -36,6 +36,7 @@ android:
     - adb shell input keyevent 82 &
 
   before_install:
+    - yes | sdkmanager "platforms;android-27"
     git update-index --chmod=+x gradlew
     - chmod +x gradlew
 
@@ -50,4 +51,4 @@ android:
       - $HOME/.android/build-cache
 
   script:
-    - ./gradlew build connectedCheck
+    - chmod +x ./gradlew build connectedCheck
