@@ -14,20 +14,22 @@ android:
     - platform-tools
     - tools
 
-    - build-tools-21.1.2
-    - android-21
+    - build-tools-27.0.3
+    - android-27
 
-    - addon-google_apis-google-21
+    - addon-google_apis-google-27
     - extra-google-m2repository
     - extra-android-m2repository
     - extra-google-google_play_services
 
-    - sys-img-armeabi-v7a-addon-google_apis-google-21
+    - sys-img-armeabi-v7a-addon-google_apis-google-27
 
   licenses:
     - android-sdk-preview-license-.+
     - android-sdk-license-.+
+    - intel-android-extra-license-.+
     - google-gdk-license-.+
+    - '.+'
 
   before_script:
     - echo no | android create avd --force -n test -t android-21 --abi google_apis/armeabi-v7a
@@ -36,7 +38,18 @@ android:
     - adb shell input keyevent 82 &
 
   before_install:
+    - mkdir "$ANDROID_HOME/licenses" || true
+    - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+    - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
     - yes | sdkmanager "platforms;android-27"
+    - echo yes | sdkmanager "tools"
+    - echo yes | sdkmanager "platforms;android-27" # Latest platform required by SDK tools
+    - echo yes | sdkmanager "platforms;android-27" # Android platform required by emulator
+    - echo yes | sdkmanager "extras;android;m2repository"
+    - echo yes | sdkmanager "extras;google;m2repository"
+    - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
+    - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
+    - echo yes | sdkmanager "system-images;android-27;google_apis;armeabi-v7a" # Install emulator system image
     - chmod +x gradlew
 
   before_cache:
