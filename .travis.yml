@@ -22,7 +22,7 @@ android:
     - extra-android-m2repository
     - extra-google-google_play_services
 
-    - sys-img-armeabi-v7a-addon-google_apis-google-27
+    - sys-img-armeabi-v7a-addon-google_apis-google-21
 
   licenses:
     - android-sdk-preview-license-.+
