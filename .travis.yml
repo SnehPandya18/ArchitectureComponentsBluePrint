@@ -12,11 +12,11 @@ branches:
 android:
   components:
     - tools
+    - tools
     - build-tools-27.0.3
     - platform-tools
     - android-27
     - extra
-    - addon
 
     - addon-google_apis-google-27
     - extra-google-m2repository
@@ -56,7 +56,7 @@ android:
 
   before_cache:
     - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-    - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+    - rm -rf $HOME/.gradle/caches/*/plugin-resolution/
 
   cache:
     directories:
@@ -64,4 +64,4 @@ android:
       - $HOME/.gradle
 
   script:
-    - chmod +x ./gradlew build connectedCheck
+    - chmod +x ./gradlew clean build
