@@ -1,6 +1,7 @@
 language: android
 sudo: required
 jdk: oraclejdk8
+os: linux
 
 branches:
   only:
@@ -13,7 +14,6 @@ android:
     - platform-tools
     - build-tools-27.0.3
     - android-27
-    - tools
 
     - addon-google_apis-google-27
     - extra-google-m2repository
@@ -57,9 +57,7 @@ android:
   cache:
     directories:
       - $HOME/.m2
-      - $HOME/.gradle/caches/
-      - $HOME/.gradle/wrapper/
-      - $HOME/.android/build-cache
+      - $HOME/.gradle
 
   script:
     - chmod +x ./gradlew build connectedCheck
