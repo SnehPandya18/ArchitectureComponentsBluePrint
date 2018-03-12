@@ -44,9 +44,12 @@ android:
   before_install:
 #    - chmod +x gradlew
     - yes | sdkmanager "platforms;android-27"
+    - yes | sdkmanager --licenses
 #    - mkdir "$ANDROID_HOME/licenses" || true
-#    - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
-#    - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+    - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+    - echo -e "\n4a96116ef84ce7b10745b31715d2ee2b92ed70ae" > "$ANDROID_HOME/licenses/android-sdk-license"
+    - echo -e "\ndfda0862550768ed04a4fb0e03c322230aff9fdc" > "$ANDROID_HOME/licenses/android-sdk-license"
+    - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
 #    - echo yes | sdkmanager "tools"
 #    - echo yes | sdkmanager "extras;android;m2repository"
 #    - echo yes | sdkmanager "extras;google;m2repository"
@@ -64,4 +67,4 @@ android:
       - $HOME/.gradle
 
   script:
-    - chmod +x ./gradlew clean build
+    - chmod +x ./gradlew build connectedCheck
